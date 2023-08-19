@@ -1,0 +1,19 @@
+.container {
+    position: relative;
+    width: 100vw;
+}
+
+.boton{
+    color: black;
+    background-color: rgb(21, 137, 8);
+    border-radius: 8px;
+    position: absolute;
+    left: 81%;
+    top: 10%
+}
+
+.input{
+    background-color: blueviolet;
+    margin-left: 50%;
+
+}
