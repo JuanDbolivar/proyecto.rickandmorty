@@ -1,19 +1,19 @@
-.container {
-    position: relative;
-    width: 100vw;
+.boton {
+  color: black;
+  background-color: rgb(21, 137, 8);
+  border-radius: 8px;
+  position: absolute;
+  left: 91%;
+  top: 17%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.boton:hover {
+  background-color: rgb(196, 255, 225);
 }
 
-.boton{
-    color: black;
-    background-color: rgb(21, 137, 8);
-    border-radius: 8px;
-    position: absolute;
-    left: 81%;
-    top: 10%
-}
-
-.input{
-    background-color: blueviolet;
-    margin-left: 50%;
-
+.input {
+  background-color: blueviolet;
+  margin-left: 50%;
+  border-radius: 1em;
 }

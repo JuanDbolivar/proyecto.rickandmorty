@@ -1,7 +1,8 @@
 import { useState } from "react";
 import validation from "./validation";
+import style from "./Form.module.css";
 
-const Form = ({login}) => {
+const Form = ({ login }) => {
   const [userDate, setUserData] = useState({
     email: "",
     password: "",
@@ -21,33 +22,37 @@ const Form = ({login}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    login(userDate)
-  }
+    login(userDate);
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className={style.container}>
+      <div className={style.email}>
         <label htmlFor="email">Email:</label>
         <input
+          className={style.input}
           type="email"
           name="email"
           value={userDate.email}
           onChange={handleChange}
         />
-        {errors.email ? <p>{errors.email}</p> : null}
+        {errors.email ? <p className={style.errorsE}>{errors.email}</p> : null}
       </div>
-      <div>
+      <div className={style.pass}>
         <label htmlFor="password">Password:</label>
         <input
+          className={style.input}
           type="text"
           name="password"
           value={userDate.password}
           onChange={handleChange}
         />
-        {errors.password ? <p>{errors.password}</p> : null}
+        {errors.password ? <p className={style.errorsP}>{errors.password}</p> : null}
       </div>
-      <div>
-        <button type="submit">Login</button>
+      <div className={style.buttonContainer}>
+        <button className={style.button} type="submit">
+          Login
+        </button>
       </div>
     </form>
   );

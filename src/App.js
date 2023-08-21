@@ -12,6 +12,7 @@ import Favorites from "./components/Favorites/Favorites";
 // import Home from './components/Home/Home'
 
 function App() {
+
   const navigate = useNavigate();
   const [access, setAccess] = useState(false);
   const EMAIL = "juanD@henry.com";
@@ -21,22 +22,20 @@ function App() {
       setAccess(true);
       navigate("/home");
     }
-    
   };
+
   useEffect(() => {
     !access && navigate("/");
   }, [access]);
+//------------------------------------------------------//
 
-  const [characters, setCharacters] = useState([]);
-  //------------------------------------------------------//
+const [characters, setCharacters] = useState([]);
 
   const onSearch = (id) => {
     axios(`https://rickandmortyapi.com/api/character/${id}`)
       .then(({ data }) => {
         if (data.id) {
           setCharacters((oldChars) => [...oldChars, data]);
-        } else if (data.id === id) {
-          window.alert("3");
         } else {
           Swal.fire({
             icon: "error",

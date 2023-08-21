@@ -8,35 +8,32 @@ import {
   faAtom,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import style from './Nav.module.css'
+import style from "./Nav.module.css";
 
 const Nav = ({ onSearch }) => {
   return (
     <div className={style.container}>
-      <ul>
-        <Link to={"/home"}>
-          <span>
-            <FontAwesomeIcon icon={faAtom} />
-            <br /> HOME
-          </span>
-          <br />
-        </Link>
-        <b>
-          <Link to={"/favorites"}>
-            <span>
-              <FontAwesomeIcon icon={faHeart} /> <br /> FAVORITES
-            </span>
-            <br />
-          </Link>
-          <Link to={"/about"}>
-            <span>
-              <FontAwesomeIcon icon={faRectangleList} /> <br />
-              ABOUT
-            </span>
-          </Link>
-        </b>
-        <SearchBar onSearch={onSearch} />
-      </ul>
+      <Link to={"/home"}>
+        <span>
+          <FontAwesomeIcon icon={faAtom} />
+          <br /> HOME
+        </span>
+        <br />
+      </Link>
+      <Link to={"/favorites"}>
+        <span>
+          <FontAwesomeIcon icon={faHeart} /> <br /> FAVORITES
+        </span>
+        <br />
+      </Link>
+      <Link to={"/about"}>
+        <span>
+          <FontAwesomeIcon icon={faRectangleList} /> <br />
+          ABOUT
+        </span>
+      </Link>
+
+      <SearchBar onSearch={onSearch} />
     </div>
   );
 };

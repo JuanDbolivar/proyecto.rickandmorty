@@ -34,6 +34,7 @@ const Buttons = styled.button`
   color: rgb(5, 90, 33);
   position: absolute;
   left: 83%;
+  cursor: pointer;
 `;
 const ButtonH = styled.button`
   border-radius: 5px;
@@ -43,6 +44,7 @@ const ButtonH = styled.button`
   color: rgb(5, 90, 33);
   position: absolute;
   left: 0%;
+  cursor: pointer;
 `;
 const Name = styled.h2`
   position: absolute;
@@ -52,6 +54,7 @@ const Name = styled.h2`
   background-color: #03f907;
   border-radius: 5px;
   z-index: 3;
+  cursor: pointer;
 `;
 
 const Img = styled.img`
@@ -111,7 +114,6 @@ export default function Card({ char, onClose }) {
           X
         </Buttons>
       )}
-
       <Link to={`/detail/${id}`}>
         <Name>{name}</Name>
       </Link>

@@ -1,5 +1,9 @@
 .container {
   background-color: rgba(86, 67, 119, 0.7);
-  margin: auto;
-  width: 70%; 
+  margin: 10% auto;
+  width: 70%;
+  padding: 10% 3%;
+  color: white;
+  text-align: center;
+  font-weight: 500;
 }

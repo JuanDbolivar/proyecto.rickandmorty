@@ -3,6 +3,7 @@ import style from "./About.module.css";
 const About = () => {
   return (
     <div className={style.container}>
+      <p>ESTE ES EL ABOUT:</p><br />
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
         corporis praesentium libero, eum similique veniam maiores voluptatem
