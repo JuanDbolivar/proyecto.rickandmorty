@@ -35,13 +35,13 @@ const Detail = () => {
   //         setCharacter(data);
   //         setLoading(false);
   //       }
-  //       // else {
-  //       //   Swal.fire({
-  //       //     icon: "error",
-  //       //     title: "Oops...",
-  //       //     text: "¡Debes ingresar un ID!",
-  //       //   });
-  //       // }
+  //        else {
+  //          Swal.fire({
+  //            icon: "error",
+  //            title: "Oops...",
+  //           text: "¡Debes ingresar un ID!",
+  //          });
+  //       }
   //     }
   //   );
   //   return setCharacter({});
