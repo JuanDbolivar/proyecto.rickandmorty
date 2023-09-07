@@ -1,18 +1,22 @@
-.container{
-   position: relative;
-   margin: 5px;
-   background-color: rgb(110, 249, 4);
-   padding: 10px;
-   display: flex;
-   flex-direction: row;
-   justify-content: space-evenly;
+.container {
+  position: sticky;
+  margin: 0 5px;
+  top: 0;
+  z-index: 9;
+  background-color: rgb(110, 249, 4);
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-a:link, a:visited, a:active {
-   text-decoration:none;
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
 }
 
-a:link:hover{
-   background-color: rgb(176, 235, 157);
-   border-radius: 4px;
+a:link:hover {
+  background-color: rgb(176, 235, 157);
+  border-radius: 4px;
 }

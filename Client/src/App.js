@@ -14,14 +14,30 @@ import Favorites from "./components/Favorites/Favorites";
 function App() {
   const navigate = useNavigate();
   const [access, setAccess] = useState(false);
-  const EMAIL = "juanD@henry.com";
-  const PASSWORD = "123Jdb";
-  const login = (userData) => {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true);
-      navigate("/home");
-    }
-  };
+
+  function login(userData) {
+    const { email, password } = userData;
+    const URL = "http://localhost:3001/rickandmorty/login/";
+    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+      const { access } = data;
+      console.log(data);
+      setAccess(data);
+      access && navigate("/home");
+    });
+  }
+
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // const EMAIL = "juanD@henry.com";
+  // const PASSWORD = "123Jdb";
+  // const login = (userData) => {
+  //   if (userData.password === PASSWORD && userData.email === EMAIL) {
+  //     setAccess(true);
+  //     navigate("/home");
+  //   }
+  // };
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   useEffect(() => {
     !access && navigate("/");
@@ -32,26 +48,28 @@ function App() {
 
   const onSearch = (id) => {
     axios(`http://localhost:3001/rickandmorty/character/${id}`)
-    .then(({ data }) => {
-      if (data.id) {
-        setCharacters((oldChars) => [...oldChars, data]);
-      } else {
+      .then(({ data }) => {
+        if (data.id) {
+          setCharacters((oldChars) => [...oldChars, data]);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "¡Debes ingresar un ID!",
+          });
+        }
+      })
+      .catch((error) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "¡Debes ingresar un ID!",
+          text: "Character not fount",
         });
-      }
-    })
-    .catch((error) => {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: error.response.data.error,
       });
-    });
   };
 
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // const onSearch = (id) => {
   //   axios(`https://rickandmortyapi.com/api/character/${id}`)
   //   .then(({ data }) => {
@@ -74,6 +92,8 @@ function App() {
   //   });
   // };
   //------------------------------------------------------//
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   const onClose = (id) => {
     const characterFil = characters.filter((char) => char.id !== Number(id));
