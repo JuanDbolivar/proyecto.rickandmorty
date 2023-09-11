@@ -7,10 +7,8 @@ const succesH = (response, res) => {
   if (response.data) {
     const { id, status, name, gender, species, origin, image } = response.data; //* response es un objeto
     res.status(200).json({ id, status, name, gender, species, origin, image });
-
-    if (!name) {
-      res.status(404).send("Not found");
-    }
+  } else {
+    res.status(404).send("Not found");
   }
 };
 const errorH = (error, res) => {
