@@ -3,7 +3,7 @@ let myFavorites = [];
 const postFav = (req, res) => {
   const newCharacter = req.body;
   myFavorites.push(newCharacter);
-  res.status(200).json(myFavorites);
+  res.status(201).json(myFavorites); // el status 201 significa created
 };
 
 const deleteFav = (req, res) => {

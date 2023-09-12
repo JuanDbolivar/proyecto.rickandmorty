@@ -9,25 +9,55 @@ import About from "./components/About/About";
 import Detail from "./components/Detail/Detail";
 import Form from "./components/Form/Form";
 import Favorites from "./components/Favorites/Favorites";
-// import Home from './components/Home/Home'
 
 function App() {
   const navigate = useNavigate();
   const [access, setAccess] = useState(false);
+  const [characters, setCharacters] = useState([]);
+  let location = useLocation();
+  useEffect(() => {
+    !access && navigate("/");
+  }, [access]);
+  //------------------------------------------------------//
 
-  function login(userData) {
-    const { email, password } = userData;
-    const URL = "http://localhost:3001/rickandmorty/login/";
-    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+  //? con express async await
+  async function login(userData) {
+    try {
+      const { email, password } = userData;
+      const URL = "http://localhost:3001/rickandmorty/login/";
+      const { data } = await axios(
+        URL + `?email=${email}&password=${password}`
+      );
       const { access } = data;
-      console.log(data);
       setAccess(data);
       access && navigate("/home");
-    });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message,
+      });
+    }
   }
 
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  //? con express
+  // function login(userData) {
+  //   const { email, password } = userData;
+  //   const URL = "http://localhost:3001/rickandmorty/login/";
+  //   axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+  //     const { access } = data;
+  //     console.log(data);
+  //     setAccess(data);
+  //     access && navigate("/home");
+  //   });
+  // }
+
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
   // const EMAIL = "juanD@henry.com";
   // const PASSWORD = "123Jdb";
   // const login = (userData) => {
@@ -36,37 +66,51 @@ function App() {
   //     navigate("/home");
   //   }
   // };
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-  useEffect(() => {
-    !access && navigate("/");
-  }, [access]);
-  //------------------------------------------------------//
-
-  const [characters, setCharacters] = useState([]);
-
-  const onSearch = (id) => {
-    axios(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(({ data }) => {
-        if (data.id) {
-          setCharacters((oldChars) => [...oldChars, data]);
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "¡Debes ingresar un ID!",
-          });
-        }
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Character not fount",
-        });
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //? con express async await
+  const onSearch = async (id) => {
+    try {
+      const { data } = await axios(
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+      if (data.id) {
+        setCharacters((oldChars) => [...oldChars, data]);
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Character not fount",
       });
+    }
   };
+
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  //? con express
+  // const onSearch = (id) => {
+  //   axios(`http://localhost:3001/rickandmorty/character/${id}`)
+  //     .then(({ data }) => {
+  //       if (data.id) {
+  //         setCharacters((oldChars) => [...oldChars, data]);
+  //       } else {
+  //         Swal.fire({
+  //           icon: "error",
+  //           title: "Oops...",
+  //           text: "¡Debes ingresar un ID!",
+  //         });
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "Oops...",
+  //         text: "Character not fount",
+  //       });
+  //     });
+  // };
 
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -99,8 +143,6 @@ function App() {
     const characterFil = characters.filter((char) => char.id !== Number(id));
     setCharacters(characterFil);
   };
-
-  let location = useLocation();
 
   return (
     <div className="App">
