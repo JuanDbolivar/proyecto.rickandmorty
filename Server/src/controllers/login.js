@@ -8,7 +8,7 @@ const login = (req, res) => {
     if (email === user.email && password === user.password) {
       res.status(200).json({ access: true });
     } else {
-      res.status(200).json({ access: true });
+      res.status(200).json({ access: false });
     }
   });
   /**
