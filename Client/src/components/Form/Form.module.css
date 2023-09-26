@@ -3,7 +3,7 @@
   margin: 9% auto;
   flex-direction: column;
   color: #f7f6fc;
-  padding: 220px 0;
+  padding: 100px 0 250px 0;
   position: relative;
   width: 550px;
   background-image: url(../../../img/login.png);
@@ -12,6 +12,121 @@
 }
 
 .email {
+  position: relative;
+}
+
+.email input {
+  font: inherit;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  transition: outline-color 500ms;
+}
+.email input:is(:focus, :valid) {
+  outline-color: #3c50eb;
+}
+.email label {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  translate: 185px 10px;
+  color: #fff;
+  transition: translate 500ms, scale 500ms;
+  pointer-events: none;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  top: 0;
+  left: 0;
+  padding: 0px 16px;
+  translate: 185px -11px;
+  border-radius: 30px;
+  scale: 0.9;
+  background-color: #712161;
+}
+
+.pass {
+  position: relative;
+}
+
+.pass input {
+  font: inherit;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  transition: outline-color 500ms;
+}
+.pass input:is(:focus, :valid) {
+  outline-color: #3c50eb;
+}
+.pass label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  translate: 185px 10px;
+  color: #fff;
+  transition: translate 500ms, scale 500ms;
+  pointer-events: none;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  top: 0;
+  left: 0;
+  padding: 0px 16px;
+  translate: 185px -11px;
+  border-radius: 30px;
+  scale: 0.9;
+  background-color: #712161;
+}
+
+.button {
+  border-radius: 2em;
+  height: 3em;
+  width: 6em;
+  background-color: #bdabcd;
+  color: black;
+  position: absolute;
+  top: 63%;
+  left: 43%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.errorsE {
+  position: absolute;
+  top: 36%;
+  left: 30%;
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  background-color: red;
+  border-radius: 40em;
+}
+
+.errorsP {
+  position: absolute;
+  top: 71%;
+  left: 22%;
+  width: 20em;
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  background-color: red;
+  border-radius: 40em;
+}
+
+.button:hover {
+  background-color: bisque;
+}
+
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+/* .email {
   margin-bottom: 1%;
   position: absolute;
   left: 28%;
@@ -23,47 +138,13 @@
   position: absolute;
   right: 31.4%;
   top: 49%;
-}
+} */
 
-.button {
-  border-radius: 2em;
-  height: 3em;
-  width: 6em;
-  background-color: #bdabcd;
-  color: black;
-  position: absolute;
-  top: 75%;
-  left: 43%;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.input {
+/* .input {
   background-color: blueviolet;
   border-radius: 1em;
   height: 1.5em;
   width: 13em;
-}
+} */
 
-.errorsE {
-  position: absolute;
-  left: 14%;
-  color: rgb(255, 255, 255);
-  font-weight: 400;
-  background-color: red;
-  border-radius: 40em;
-}
-
-.errorsP {
-  position: absolute;
-  left: 2%;
-  width: 20em;
-  color: rgb(255, 255, 255);
-  font-weight: 400;
-  background-color: red;
-  border-radius: 40em;
-}
-
-.button:hover {
-  background-color: bisque;
-}
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */

@@ -28,26 +28,30 @@ const Form = ({ login }) => {
   return (
     <form onSubmit={handleSubmit} className={style.container}>
       <div className={style.email}>
-        <label htmlFor="email">Email:</label>
         <input
-          className={style.input}
+          // className={style.input}
           type="email"
           name="email"
+          required
           value={userDate.email}
           onChange={handleChange}
         />
+        <label htmlFor="email">Email</label>
         {errors.email ? <p className={style.errorsE}>{errors.email}</p> : null}
       </div>
       <div className={style.pass}>
-        <label htmlFor="password">Password:</label>
         <input
-          className={style.input}
+          // className={style.input}
           type="text"
           name="password"
+          required
           value={userDate.password}
           onChange={handleChange}
         />
-        {errors.password ? <p className={style.errorsP}>{errors.password}</p> : null}
+        <label htmlFor="password">Password</label>
+        {errors.password ? (
+          <p className={style.errorsP}>{errors.password}</p>
+        ) : null}
       </div>
       <div className={style.buttonContainer}>
         <button className={style.button} type="submit">
